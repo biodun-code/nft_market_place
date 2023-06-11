@@ -110,14 +110,19 @@ const Collections = () => {
           </Box>
           <div className="h-[1px] bg-gray-200 mt-2"></div>
           <TabPanel value="collections">
-            {!isLoading && data.length > 0 ? (
+            {!isLoading && data && data.length > 0 ? (
               <ListCollection data={data}></ListCollection>
             ) : (
               <>
-                <ListCollectionSkeleton></ListCollectionSkeleton>
+                {isLoading ? (
+                  <ListCollectionSkeleton></ListCollectionSkeleton>
+                ) : (
+                  <p>No data available.</p>
+                )}
               </>
             )}
           </TabPanel>
+
           <TabPanel value="items">
             {!isLoading && data && data?.length > 0 ? (
               <ListItem data={data}></ListItem>

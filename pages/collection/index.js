@@ -24,9 +24,13 @@ const Index = ({ collections }) => {
   useEffect(() => {
     if (valueSearch !== '') {
       setIsLoading(true);
-      const listNewData = collections.filter((col) => {
-        return col.collectionName.includes(valueSearch);
-      });
+      const listNewData =
+        collections && Array.isArray(collections)
+          ? collections.filter((col) => {
+              return col.collectionName.includes(valueSearch);
+            })
+          : [];
+
       setIsLoading(false);
       setData(listNewData);
     }
@@ -68,12 +72,13 @@ const Index = ({ collections }) => {
         <div className="collection-list w-[95%] mx-auto grid grid-cols-4 relative gap-8">
           {isLoading && <ListSkeleton></ListSkeleton>}
 
-          {!isLoading &&
+          {data &&
+            Array.isArray(data) &&
             data.map((collection) => (
               <CollectionCard collection={collection} key={uuidv4()} />
             ))}
         </div>
-        {!isLoading && data.length === 0 && (
+        {!isLoading && data && data.length === 0 && (
           <>
             <div className="w-[95%] mx-auto h-[300px] border-2 rounded-lg border-gray-200 flex justify-center items-center">
               <p className="text-2xl">Collection not found by name</p>
@@ -103,19 +108,19 @@ const ListSkeleton = () => {
   );
 };
 
-export async function getServerSideProps(context) {
-  context.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  );
+// export async function getServerSideProps(context) {
+//   context.res.setHeader(
+//     'Cache-Control',
+//     'public, s-maxage=10, stale-while-revalidate=59'
+//   );
 
-  const data = await getAllCollections();
+//   const data = await getAllCollections();
 
-  return {
-    props: {
-      collections: data,
-    },
-  };
-}
+//   return {
+//     props: {
+//       collections: data,
+//     },
+//   };
+// }
 
 export default Index;

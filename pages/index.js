@@ -1,9 +1,9 @@
 // import Category from '@/components/category/Category';
 
 import Collections from '@/components/collections/Collections';
-import Category from '@/components/category/Category';
+import Category from 'components/Category/Category.jsx';
 import Question from '@/components/questions/Question';
-import Slider from '@/components/slider/Slider';
+import Slider from 'components/Slider/Slider.jsx';
 
 import React, { useEffect } from 'react';
 
@@ -26,19 +26,19 @@ const Home = ({ collectionSlider }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  context.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  );
+// export async function getServerSideProps(context) {
+//   context.res.setHeader(
+//     'Cache-Control',
+//     'public, s-maxage=10, stale-while-revalidate=59'
+//   );
 
-  const topTenCollectionLatest = await getTopTenCollectionLatest();
+//   const topTenCollectionLatest = await getTopTenCollectionLatest();
 
-  return {
-    props: {
-      collectionSlider: topTenCollectionLatest,
-    },
-  };
-}
+//   return {
+//     props: {
+//       collectionSlider: topTenCollectionLatest,
+//     },
+//   };
+// }
 
 export default Home;

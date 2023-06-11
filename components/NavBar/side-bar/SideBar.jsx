@@ -15,7 +15,7 @@ import {
 //INTERNAL IMPORT
 import Style from './SideBar.module.css';
 import images from '../../../img';
-import Button from '../../button/Button';
+import Button from 'components/Button/Button.jsx';
 
 const SideBar = ({ setOpenSideMenu }) => {
   //------USESTATE

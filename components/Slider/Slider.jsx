@@ -35,27 +35,31 @@ const Slider = ({ cols }) => {
           onSwiper={(swiper) => {}}
           navigation={true}
         >
-          {cols.map((col, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className={`${Style.slider_item} overflow-hidden rounded-lg w-full h-[400px transition-all`}
-                onClick={() => router.push(`/collection/${col.collectionName}`)}
-              >
-                <img
-                  className="h-full w-full object-cover rounded-lg hover:scale-105"
-                  src={col.featuredImage}
-                  alt="slider-1"
-                />
+          {cols &&
+            Array.isArray(cols) &&
+            cols.map((col, index) => (
+              <SwiperSlide key={index}>
                 <div
-                  className={`absolute bottom-0 -translate-x-3 bg-black py-2 bg-opacity-50 w-[110%] text-center`}
+                  className={`${Style.slider_item} overflow-hidden rounded-lg w-full h-[400px transition-all`}
+                  onClick={() =>
+                    router.push(`/collection/${col.collectionName}`)
+                  }
                 >
-                  <h3 className="capitalize -translate-x-3 p-2">
-                    {col.collectionName}
-                  </h3>
+                  <img
+                    className="h-full w-full object-cover rounded-lg hover:scale-105"
+                    src={col.featuredImage}
+                    alt="slider-1"
+                  />
+                  <div
+                    className={`absolute bottom-0 -translate-x-3 bg-black py-2 bg-opacity-50 w-[110%] text-center`}
+                  >
+                    <h3 className="capitalize -translate-x-3 p-2">
+                      {col.collectionName}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </>

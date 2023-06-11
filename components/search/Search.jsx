@@ -81,13 +81,19 @@ const Search = () => {
         return { ...prev, isLoading: true, open: true };
       });
 
-      const colSearch = dataApi.collections.filter((col) => {
-        return col.collectionName.includes(debouncedSearchText);
-      });
+      const colSearch =
+        dataApi.collections && Array.isArray(dataApi.collections)
+          ? dataApi.collections.filter((col) => {
+              return col.collectionName.includes(debouncedSearchText);
+            })
+          : [];
 
-      const itemSearch = dataApi.items.filter((item) => {
-        return item.itemName.includes(debouncedSearchText);
-      });
+      const itemSearch =
+        dataApi.items && Array.isArray(dataApi.items)
+          ? dataApi.items.filter((item) => {
+              return item.itemName.includes(debouncedSearchText);
+            })
+          : [];
 
       setDataSearch((prev) => {
         return { ...prev, collections: colSearch, items: itemSearch };

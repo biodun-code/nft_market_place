@@ -4,7 +4,7 @@ import Image from 'next/image';
 //INTERNAL IMPORT
 import Style from '../styles/aboutus.module.css';
 import images from '../img';
-import Brand from '@/components/brand/Brand';
+import Brand from 'components/Brand/Brand.jsx';
 
 const aboutus = () => {
   const founderArray = [

@@ -16,24 +16,24 @@ import {
   modalPaymentState,
   modalPaymentStateSuccess,
 } from '../../global-state/modal';
-import ModalBase from '../modal/ModalBase';
-import Cart from '../cart/Cart';
+import ModalBase from 'components/Modal/ModalBase.jsx';
+import Cart from 'components/Cart/Cart.jsx';
 import Link from 'next/link';
 import useHover from '../../hook/useHover';
 import { connectMetaMaskState } from '../../global-state/connect-metamask';
-import ModalMetaMask from '../modal/modal-notify-metamask/ModalMetaMask';
-import ModalWallet from '../modal/modal-wall-net/ModalWallet';
-import Profile from './profile/Profile';
+import ModalMetaMask from 'components/Modal/modal-notify-metamask/ModalMetaMask';
+import ModalWallet from 'components/Modal/modal-notify-metamask/ModalMetaMask.jsx';
+import Profile from 'components/NavBar/Profile/Profile.jsx';
 import HelpCenter from './help-center/HelpCenter';
-import Discover from './discover/Discover';
+import Discover from 'components/NavBar/Discover/Discover.jsx';
 import Search from '../search/Search';
 import SideBar from './side-bar/SideBar';
 import { cartState } from 'global-state/cart';
-import ModalPayment from '../modal/modal-payment/ModalPayment';
+import ModalPayment from 'components/Modal/modal-payment/ModalPayment';
 import { useCallback } from 'react';
 import axiosClient from 'utils/axiosClient';
 import { useRouter } from 'next/router';
-import ModalPaymentSuccess from '../modal/modal-payment-success/ModalPaymentSuccess';
+import ModalPaymentSuccess from 'components/Modal/modal-payment-success/ModalPaymentSuccess';
 import { profileState } from 'global-state/profile';
 
 const NavBar = () => {
@@ -91,13 +91,13 @@ const NavBar = () => {
     });
   };
 
-  useEffect(() => {
-    window.ethereum.on('accountsChanged', async function (accounts) {
-      resetMetaMask();
-      handleOpenMeta();
-      router.push('/');
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.ethereum.on('accountsChanged', async function (accounts) {
+  //     resetMetaMask();
+  //     handleOpenMeta();
+  //     router.push('/');
+  //   });
+  // }, []);
 
   return (
     <NoSsr>

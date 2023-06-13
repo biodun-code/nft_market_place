@@ -1,4 +1,4 @@
-import Button from '@/components/button/Button';
+import Button from '/home/biodun/nft_marketplace/components/Button/Button.jsx';
 import React from 'react';
 import { TiTick } from 'react-icons/ti';
 
